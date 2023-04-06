@@ -1,3 +1,3 @@
-from game import run
+from game import run, test
 
 run()
