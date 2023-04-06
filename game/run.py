@@ -20,7 +20,12 @@ def run():
     
     game = Game(1)
     
-    for tick in range(0, 10*FPS):
+    while game.running:
+        game.tick += 1
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game.running = False
         
         game.update()
         
@@ -32,3 +37,4 @@ def run():
         
         clock.tick(FPS)
         
+    pygame.quit()
