@@ -3,8 +3,7 @@ import contextlib
 with contextlib.redirect_stdout(None):
     import pygame
 
-from .enemy import BaseEnemy
-from .maps import BaseMap
+from .game import Game
 from .utils.colours import BLACK
 
 FPS = 60
@@ -19,17 +18,15 @@ def run():
     screen = pygame.display.set_mode(SCREEN_SIZE)
     clock = pygame.time.Clock()
     
-    game_map = BaseMap(1)
-    example_enemy = BaseEnemy(game_map, 3, lambda x: None)
+    game = Game(1)
     
     for tick in range(0, 10*FPS):
         
-        example_enemy.update()
+        game.update()
         
         screen.fill(BLACK)
         
-        game_map.draw_path_line(screen)
-        example_enemy.draw_box(screen)
+        game.draw_debug(screen)
         
         pygame.display.flip()
         
