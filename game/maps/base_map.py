@@ -38,6 +38,11 @@ class BaseMap:
         return path, Vector2(level_module.start_coord)
     
     def draw_path_line(self, screen: Surface):
+        """Draws a basic skeleton of the map's path.
+
+        Args:
+            screen (Surface): The surface to draw the path on.
+        """
         curr_coord = self.start_coord.copy()
         
         for step in self.path:
