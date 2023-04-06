@@ -1,11 +1,11 @@
 from pygame.surface import Surface
 
 from .enemy import BaseEnemy
-from .maps import BaseMap
+from .maps import Map
 
 class Game:
     def __init__(self, level: int):
-        self.map = BaseMap(level)
+        self.map = Map(level)
         
         self.tick = 0
         self.running = True

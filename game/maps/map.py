@@ -14,7 +14,7 @@ DIRECTION_RIGHT = Vector2([1, 0])
 
 DIRECTIONS = [DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_DOWN, DIRECTION_LEFT]
 
-class BaseMap:
+class Map:
     def __init__(self, level: int):        
         self.path, self.start_coord = self.load(level)
         

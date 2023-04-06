@@ -1,4 +1,4 @@
-from ..base_map import (DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT,
+from ..map import (DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT,
                         DIRECTION_UP)
 
 

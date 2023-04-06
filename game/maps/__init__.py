@@ -1,1 +1,1 @@
-from .base_map import BaseMap
+from .map import Map

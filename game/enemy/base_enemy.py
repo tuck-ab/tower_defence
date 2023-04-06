@@ -6,7 +6,7 @@ from pygame.surface import Surface
 from pygame.draw import rect
 from pygame.rect import Rect
 
-from ..maps import BaseMap
+from ..maps import Map
 from ..utils.sprite import Sprite
 from ..utils.colours import RED
 
@@ -15,7 +15,7 @@ class BaseEnemy(Sprite):
     """Default class for an enemy. This can be inherited by other classes
     to create more enemies of different types
     """
-    def __init__(self, curr_map: BaseMap, speed: int,
+    def __init__(self, curr_map: Map, speed: int,
                  at_goal_callback: Callable[[BaseEnemy], None]):
         super().__init__(curr_map.start_coord.copy())
         
