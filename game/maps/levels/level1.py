@@ -8,4 +8,4 @@ path = [
     (DIRECTION_LEFT, 500)
 ]
 
-start_coord = [10, 10]
+start_coord = [100, 100]
