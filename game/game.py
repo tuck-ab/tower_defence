@@ -1,6 +1,6 @@
 from pygame.surface import Surface
 
-from .enemy import BaseEnemy
+from .enemy import NSided
 from .maps import Map
 
 class Game:
@@ -18,7 +18,7 @@ class Game:
             enemy.update()
             
         if self.tick % 50 == 0:
-            self.enemies.append(BaseEnemy(self.map, 3, self.enemy_callback))
+            self.enemies.append(NSided((self.tick // 50)+2, self.map, self.enemy_callback))
             
     def enemy_callback(self, enemy):
         self.enemies.remove(enemy)
@@ -27,4 +27,4 @@ class Game:
         """Draw a skeleton of what is on the screen"""
         self.map.draw_path_line(screen)
         for enemy in self.enemies:
-            enemy.draw_box(screen)
+            enemy.draw(screen)
