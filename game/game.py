@@ -1,6 +1,8 @@
+from typing import List
+
 from pygame.surface import Surface
 
-from .enemy import NSided
+from .enemy import NSided, BaseEnemy
 from .maps import Map
 
 class Game:
@@ -10,7 +12,7 @@ class Game:
         self.tick = 0
         self.running = True
         
-        self.enemies = []
+        self.enemies: List[BaseEnemy] = []
         
     def update(self):
         """Update the game this main loop itteration"""
@@ -20,7 +22,7 @@ class Game:
         if self.tick % 50 == 0:
             self.enemies.append(NSided((self.tick // 50)+2, self.map, self.enemy_callback))
             
-    def enemy_callback(self, enemy):
+    def enemy_callback(self, enemy: BaseEnemy):
         self.enemies.remove(enemy)
         
     def draw_debug(self, screen: Surface):
