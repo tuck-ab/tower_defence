@@ -5,7 +5,7 @@ from pygame.surface import Surface
 
 from game.enemy import BaseEnemy
 from game.maps import Map
-from game.maps.spawner import Spawner
+from game.spawner import Spawner
 from game.towers import BaseTower
 
 
