@@ -17,18 +17,23 @@ class Game:
         
         self.enemies: List[BaseEnemy] = []
         
-        self.tower = BaseTower(2, Vector2((100, 50)))
+        self.enemies.append(NSided(3, self.map, self.enemy_callback))
+        
+        self.tower = BaseTower(230, Vector2((300, 300)))
         
     def update(self):
         """Update the game this main loop itteration"""
         for enemy in self.enemies:
             enemy.update()
             
-        if self.tick % 50 == 0:
-            self.enemies.append(NSided((self.tick // 50)+2, self.map, self.enemy_callback))
+        if self.tick == 50:
+            self.enemies.append(NSided((self.tick // 50)+3, self.map, self.enemy_callback))
+            
+        target = self.tower.get_target(self.enemies)
             
     def enemy_callback(self, enemy: BaseEnemy):
         self.enemies.remove(enemy)
+        self.enemies.append(NSided(enemy.sides, self.map, self.enemy_callback))
         
     def draw_debug(self, screen: Surface):
         """Draw a skeleton of what is on the screen"""
