@@ -1,11 +1,11 @@
-from typing import Tuple, List
 from importlib import import_module
+from typing import List, Tuple
 
 from pygame.draw import line
-from pygame.surface import Surface
 from pygame.math import Vector2
+from pygame.surface import Surface
 
-from ..utils.colours import WHITE
+from game.utils.colours import WHITE
 
 DIRECTION_UP = Vector2([0, -1])
 DIRECTION_DOWN = Vector2([0, 1])

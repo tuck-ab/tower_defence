@@ -1,12 +1,12 @@
 from typing import Callable
 
-from pygame.math import Vector2
 from pygame.draw import polygon
+from pygame.math import Vector2
 from pygame.surface import Surface
 
-from .base_enemy import BaseEnemy
-from ..maps import Map
-from ..utils.colours import RED
+from game.enemy import BaseEnemy
+from game.maps import Map
+from game.utils.colours import RED
 
 SIZE = 30
 ROT_SPEED = 3

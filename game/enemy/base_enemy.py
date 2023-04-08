@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing import Callable
 
-from pygame.surface import Surface
 from pygame.draw import rect
 from pygame.rect import Rect
+from pygame.surface import Surface
 
-from ..maps import Map
-from ..utils.sprite import Sprite
-from ..utils.colours import RED
+from game.maps import Map
+from game.utils.colours import RED
+from game.utils.sprite import Sprite
 
 
 class BaseEnemy(Sprite):

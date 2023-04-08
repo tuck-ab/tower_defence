@@ -1,4 +1,4 @@
-from .maps import Map
+from game.maps import Map
 
 def test():
     thing = Map(1)

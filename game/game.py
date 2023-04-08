@@ -1,9 +1,12 @@
 from typing import List
 
+from pygame.math import Vector2
 from pygame.surface import Surface
 
-from .enemy import NSided, BaseEnemy
-from .maps import Map
+from game.enemy import BaseEnemy, NSided
+from game.maps import Map
+from game.towers import BaseTower
+
 
 class Game:
     def __init__(self, level: int):
@@ -13,6 +16,8 @@ class Game:
         self.running = True
         
         self.enemies: List[BaseEnemy] = []
+        
+        self.tower = BaseTower(2, Vector2((100, 50)))
         
     def update(self):
         """Update the game this main loop itteration"""
@@ -30,3 +35,5 @@ class Game:
         self.map.draw_path_line(screen)
         for enemy in self.enemies:
             enemy.draw(screen)
+            
+        self.tower.draw_box(screen)

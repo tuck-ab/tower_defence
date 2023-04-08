@@ -4,7 +4,7 @@ from pygame.math import Vector2
 from pygame.rect import Rect
 from pygame.surface import Surface
 
-from .colours import RED
+from game.utils.colours import RED
 
 
 class Sprite:

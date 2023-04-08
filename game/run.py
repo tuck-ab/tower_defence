@@ -3,8 +3,8 @@ import contextlib
 with contextlib.redirect_stdout(None):
     import pygame
 
-from .game import Game
-from .utils.colours import BLACK
+from game.game import Game
+from game.utils.colours import BLACK
 
 FPS = 60
 SCREEN_SIZE = (1280, 720)
