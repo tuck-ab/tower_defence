@@ -16,6 +16,18 @@ TOWER_CLASS_MAPPER = [
 
 def load_spawns(level: int, curr_map: Map, 
                 e_callback: Callable[[BaseEnemy], None]) -> List[Tuple[BaseEnemy, int]]:
+    """Loads the spawns for a level from the JSON that defines the spawns
+    of the level.
+
+    Args:
+        level (int): The level to load.
+        curr_map (Map): Instance of the current map for the enemies.
+        e_callback (Callable[[BaseEnemy], None]): Callback the enemy runs if it reaches the goal.
+
+    Returns:
+        List[Tuple[BaseEnemy, int]]: Enemy delay pair. The enemy to spawn paired with
+        the delay in ticks to spawn the enemy from the start of the level.
+    """
     with open(os.path.join(LEVELS_DIR, f"lvl{level}.json")) as f:
         json_data = json.load(f)
     
@@ -34,6 +46,7 @@ class Spawner:
         self.spawn_func = spawn_callback
         
     def update(self):
+        """Update function to be run every iteration of the game loop"""
         self.level_tick += 1
         
         while self.spawns and self.level_tick >= self.spawns[0][1]:
