@@ -40,3 +40,18 @@ class NSided(BaseEnemy):
             points.append(self.loc + up_vec.rotate(i * angle))
             
         polygon(screen, RED, points)
+        
+def triangle(curr_map: Map, callback: Callable[[BaseEnemy], None]) -> NSided:
+    return NSided(3, curr_map, callback)
+
+def square(curr_map: Map, callback: Callable[[BaseEnemy], None]) -> NSided:
+    return NSided(4, curr_map, callback)  
+
+def pentagon(curr_map: Map, callback: Callable[[BaseEnemy], None]) -> NSided:
+    return NSided(5, curr_map, callback) 
+
+def hexagon(curr_map: Map, callback: Callable[[BaseEnemy], None]) -> NSided:
+    return NSided(6, curr_map, callback) 
+
+def octagon(curr_map: Map, callback: Callable[[BaseEnemy], None]) -> NSided:
+    return NSided(8, curr_map, callback) 
