@@ -2,12 +2,16 @@ import json
 import os
 from typing import List, Tuple, Callable
 
-from game.enemy import BaseEnemy, NSided
+from game.enemy import BaseEnemy, triangle, square, pentagon, hexagon, octagon
 from game.maps import Map
 from game.utils.dir_paths import LEVELS_DIR
 
 TOWER_CLASS_MAPPER = [
-    NSided
+    triangle,
+    square,
+    pentagon,
+    hexagon,
+    octagon
 ]
 
 def load_spawns(level: int, curr_map: Map, 
@@ -16,8 +20,8 @@ def load_spawns(level: int, curr_map: Map,
         json_data = json.load(f)
     
     out_list = []
-    for t_index, args, delay in json_data:
-        out_list.append((TOWER_CLASS_MAPPER[t_index](args[0], curr_map, e_callback), delay))
+    for t_index, delay in json_data:
+        out_list.append((TOWER_CLASS_MAPPER[t_index](curr_map, e_callback), delay))
     return out_list
 
 class Spawner:
