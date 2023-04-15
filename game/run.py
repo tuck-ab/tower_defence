@@ -5,9 +5,7 @@ with contextlib.redirect_stdout(None):
 
 from game.game import Game
 from game.utils.colours import BLACK
-
-FPS = 60
-SCREEN_SIZE = (1280, 720)
+from game.settings import FPS, SCREEN_SIZE
 
 def run():
     """Runs the game"""
