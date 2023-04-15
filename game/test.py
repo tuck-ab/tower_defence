@@ -1,6 +1,6 @@
-from game.maps import Map
+from pygame.math import Vector2
+
+from game.towers import BaseProjectile
 
 def test():
-    thing = Map(1)
-    print(thing.start_coord, type(thing.start_coord))
-    print(thing.path)
+    thing = BaseProjectile(Vector2((500, 500)), Vector2((1, 0)))

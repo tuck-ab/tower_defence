@@ -6,7 +6,7 @@ from pygame.surface import Surface
 from game.enemy import BaseEnemy
 from game.maps import Map
 from game.spawner import Spawner
-from game.towers import BaseTower
+from game.towers import BaseTower, BaseProjectile, AlphaTower
 
 
 class Game:
@@ -17,18 +17,28 @@ class Game:
         self.running = True
         
         self.enemies: List[BaseEnemy] = []
+        self.projectiles: List[BaseProjectile] = []
+        self.towers: List[BaseTower] = []
+        
         self.spawner = Spawner(1, self.map, self.spawner_callback, self.enemy_callback)
         
-        self.tower = BaseTower(230, Vector2((300, 300)))
+        self.towers.append(AlphaTower(Vector2((350, 150)), self.add_projectile_callback))
         
     def update(self):
         """Update the game this main loop itteration"""
         for enemy in self.enemies:
             enemy.update()
             
-        self.spawner.update()
+        for tower in self.towers:
+            tower.get_target(self.enemies)
+            tower.update()
             
-        target = self.tower.get_target(self.enemies)
+        for proj in self.projectiles:
+            proj.update()
+            
+        print(len(self.projectiles))
+            
+        self.spawner.update()
             
     def enemy_callback(self, enemy: BaseEnemy):
         self.enemies.remove(enemy)
@@ -36,10 +46,21 @@ class Game:
     def spawner_callback(self, enemy: BaseEnemy):
         self.enemies.append(enemy)
         
+    def add_projectile_callback(self, projectile: BaseProjectile):
+        self.projectiles.append(projectile)
+        projectile.off_screen_callback = lambda x: self.projectiles.remove(x)
+        
     def draw_debug(self, screen: Surface):
         """Draw a skeleton of what is on the screen"""
         self.map.draw_path_line(screen)
+        
+        for tower in self.towers:
+            tower.draw_box(screen)
+        
         for enemy in self.enemies:
             enemy.draw(screen)
             
-        self.tower.draw_box(screen)
+        for proj in self.projectiles:
+            proj.draw_box(screen)
+            
+        
